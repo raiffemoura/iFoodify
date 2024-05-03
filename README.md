@@ -4,3 +4,4 @@
 
 -NextJs
 -Prisma
+-Tailwind
