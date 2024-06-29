@@ -22,7 +22,7 @@ const Restaurants = () => {
   }, [searchFor]);
 
   if (!searchFor) {
-    notFound();
+    return notFound();
   }
 
   return (
