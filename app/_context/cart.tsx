@@ -10,6 +10,8 @@ export interface CartProduct
       restaurant: {
         select: {
           deliveryFee: true;
+          id: true;
+          deliveryTimeMinutes: true;
         };
       };
     };
@@ -21,7 +23,7 @@ interface ICartContext {
   products: CartProduct[];
   subtotalPrice: number;
   totalPrice: number;
-  totalDiscount: number;
+  totalDiscounts: number;
   totalQuantity: number;
 
   addProductToCart: ({
@@ -34,6 +36,8 @@ interface ICartContext {
         restaurant: {
           select: {
             deliveryFee: true;
+            id: true;
+            deliveryTimeMinutes: true;
           };
         };
       };
@@ -44,18 +48,20 @@ interface ICartContext {
   decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
   removeProductFromCart: (productId: string) => void;
+  clearCart: () => void;
 }
 
 export const CartContext = createContext<ICartContext>({
   products: [],
   subtotalPrice: 0,
   totalPrice: 0,
-  totalDiscount: 0,
+  totalDiscounts: 0,
   totalQuantity: 0,
   addProductToCart: () => {},
   decreaseProductQuantity: () => {},
   increaseProductQuantity: () => {},
   removeProductFromCart: () => {},
+  clearCart: () => {},
 });
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -81,7 +87,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }, 0);
   }, [products]);
 
-  const totalDiscount =
+  const clearCart = () => {
+    return setProducts([]);
+  };
+
+  const totalDiscounts =
     subtotalPrice - totalPrice + Number(products?.[0]?.restaurant?.deliveryFee);
   const decreaseProductQuantity = (productId: string) => {
     return setProducts((prev) =>
@@ -172,8 +182,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         products,
         subtotalPrice,
         totalPrice,
-        totalDiscount,
+        totalDiscounts,
         totalQuantity,
+        clearCart,
         addProductToCart,
         decreaseProductQuantity,
         increaseProductQuantity,

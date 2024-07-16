@@ -24,6 +24,7 @@ import { Separator } from "./ui/separator";
 
 const Header = () => {
   const { data } = useSession();
+
   const handleSignOutClick = () => signOut();
   const handleSignInClick = () => signIn();
 
