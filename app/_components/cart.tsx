@@ -31,23 +31,34 @@ const Cart = () => {
 
   const handleFinishOrderClick = async () => {
     if (!data?.user) return;
+
     const restaurant = products[0].restaurant;
+
     try {
-      setIsSubmitLoading(true),
-        await createOrder({
-          subtotalPrice,
-          totalDiscounts,
-          totalPrice,
-          deliveryFee: restaurant.deliveryFee,
-          deliveryTimeMinutes: restaurant.deliveryTimeMinutes,
-          restaurant: {
-            connect: { id: restaurant.id },
+      setIsSubmitLoading(true);
+
+      await createOrder({
+        subtotalPrice,
+        totalDiscounts,
+        totalPrice,
+        deliveryFee: restaurant.deliveryFee,
+        deliveryTimeMinutes: restaurant.deliveryTimeMinutes,
+        restaurant: {
+          connect: { id: restaurant.id },
+        },
+        status: OrderStatus.CONFIRMED,
+        user: {
+          connect: { id: data.user.id },
+        },
+        products: {
+          createMany: {
+            data: products.map((product) => ({
+              productId: product.id,
+              quantity: product.quantity,
+            })),
           },
-          status: OrderStatus.CONFIRMED,
-          user: {
-            connect: { id: data.user.id },
-          },
-        });
+        },
+      });
 
       clearCart();
     } catch (error) {
@@ -128,14 +139,16 @@ const Cart = () => {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={isConfirmDialogOpen}>
-              {" "}
+            <AlertDialogCancel onClick={() => setIsConfirmDialogOpen(false)}>
+              Cancelar
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleFinishOrderClick}
+              disabled={isSubmitLoading}
+            >
               {isSubmitLoading && (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               )}
-              Cancelar
-            </AlertDialogCancel>
-            <AlertDialogAction onClick={handleFinishOrderClick}>
               Finalizar
             </AlertDialogAction>
           </AlertDialogFooter>
