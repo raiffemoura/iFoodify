@@ -69,7 +69,7 @@ model Order {
 
 enum OrderStatus {
   CONFIRMED
-  CANCE
+  CANCELED
   PREPARING
   DELIVERING
   COMPLETED
