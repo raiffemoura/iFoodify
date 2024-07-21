@@ -38,7 +38,10 @@ const Cart = ({ setIsOpen }: CartProps) => {
     useContext(CartContext);
 
   const handleFinishOrderClick = async () => {
-    if (!data?.user) return;
+    if (!data?.user) {
+      toast("Efetue o login para finalizar o pedido.");
+      return;
+    }
 
     const restaurant = products[0].restaurant;
 
