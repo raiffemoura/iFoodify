@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 :root {
+  --background-home-start: 0 30% 90%;
+  --background-home-end: 0 30% 90%;
   --background: 0 0% 96%;
   --foreground: 0 0% 20%;
   --card: 356 50% 100%;
@@ -55,5 +57,19 @@
 
   body {
     @apply text-foreground antialiased;
+    background-color: hsl(var(--background));
+    background: linear-gradient(
+      to right,
+      hsl(var(--background-home-start)),
+      hsl(var(--background)),
+      hsl(var(--background)),
+      hsl(var(--background)),
+      hsl(var(--background)),
+      hsl(var(--background)),
+      hsl(var(--background)),
+      hsl(var(--background)),
+      hsl(var(--background-home-end))
+    );
+    min-height: 100vh;
   }
 }

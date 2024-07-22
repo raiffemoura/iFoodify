@@ -68,14 +68,13 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
   });
 
   return (
-    <div>
+    <div className="mx-auto max-w-3xl bg-background">
       <RestaurantImage
         restaurant={JSON.parse(JSON.stringify(restaurant))}
         userFavoriteRestaurants={userFavoriteRestaurants}
       />
 
-      <div className="relative z-50 mt-[-1.5rem] flex items-center justify-between rounded-tl-3xl bg-white  px-5 py-5 pt-5">
-        {/* TITULO */}
+      <div className="relative z-50 mt-[-1.5rem] flex items-center justify-between rounded-tl-3xl rounded-tr-3xl bg-white  px-5 py-5 pt-5">
         <div className="flex items-center gap-[0.375rem]">
           <div className="relative h-8 w-8">
             <Image
@@ -101,10 +100,10 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
       <div className="mt-3  flex gap-4 overflow-x-scroll px-5 [&::-webkit-scrollbar]:hidden">
         {restaurant.categories.map((category) => (
           <div
-            className="min-w-[167px] rounded-lg bg-[#F4F4F4] text-center"
+            className="min-w-[150px] rounded-lg bg-[#F4F4F4] text-center"
             key={category.id}
           >
-            <span className="text-xs text-muted-foreground">
+            <span className="flex justify-evenly text-xs text-muted-foreground">
               {category.name}
             </span>
           </div>
@@ -112,7 +111,6 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
       </div>
 
       <div className="mt-6 space-y-4">
-        {/* TODO MOSTRAR PRODUTOS MAIS PEDIDOS QUANDO IMPLEMENTARMOS A REALIZACAO DE PEDIDOS  */}
         <h2 className="px-5 font-semibold">Mais Pedidos</h2>
 
         <ProductList products={restaurant.products} />

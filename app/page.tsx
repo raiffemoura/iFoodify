@@ -54,7 +54,7 @@ const fetch = async () => {
 const Home = async () => {
   const { products, burguersCategory, pizzasCategory } = await fetch();
   return (
-    <>
+    <div className="mx-auto flex max-w-3xl flex-col bg-background">
       <Header />
       <div className="px-5 pt-6">
         <Search />
@@ -112,7 +112,7 @@ const Home = async () => {
         </div>
         <RestaurantList />
       </div>
-    </>
+    </div>
   );
 };
 

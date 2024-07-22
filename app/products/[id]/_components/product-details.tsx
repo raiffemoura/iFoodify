@@ -88,9 +88,8 @@ const ProductDetails = ({
     });
   };
   return (
-    <>
-      <div className="relative z-50 mt-[-1.5rem] rounded-tl-3xl bg-white py-5">
-        {/*RESTAURANTE*/}
+    <div>
+      <div className="relative z-50 mt-[-1.5rem] rounded-tl-3xl rounded-tr-3xl bg-background py-5">
         <div className="flex items-center gap-[0.375rem] px-5">
           <div className="relative h-6 w-6">
             <Image
@@ -105,11 +104,8 @@ const ProductDetails = ({
           </span>
         </div>
 
-        {/* NOME DO PRODUTO  */}
         <h1 className="mb-2 mt-1 px-5 text-xl font-semibold">{product.name}</h1>
-        {/* PREÇO  DO PRODUTO E QUANTIDADE*/}
         <div className=" flex justify-between px-5">
-          {/* PREÇO COM DESCONTO*/}
           <div>
             <div className="flex items-center gap-2">
               <h2 className="text-xl font-semibold">
@@ -126,7 +122,6 @@ const ProductDetails = ({
               </p>
             )}
           </div>
-          {/* QUANTIDADE */}
           <div className="flex items-center gap-3 text-center">
             <Button
               size="icon"
@@ -200,7 +195,7 @@ const ProductDetails = ({
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </>
+    </div>
   );
 };
 

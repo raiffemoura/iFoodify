@@ -38,7 +38,7 @@ const ProductsPage = async ({ params: { id } }: ProductsPageProps) => {
   });
 
   return (
-    <div>
+    <div className="mx-auto flex max-w-3xl flex-col">
       {/* IMAGEM */}
       <ProductImage product={product} />
       {/*TITULO E PREÇO*/}

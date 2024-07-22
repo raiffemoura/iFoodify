@@ -18,7 +18,7 @@ const myFavoriteRestaurants = async () => {
     },
   });
   return (
-    <>
+    <div className="mx-auto flex max-w-3xl flex-col">
       <Header />
       <div className="px-5 py-6 ">
         <h2 className="mb-6 text-lg font-semibold">Restaurantes Favoritos</h2>
@@ -39,7 +39,7 @@ const myFavoriteRestaurants = async () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

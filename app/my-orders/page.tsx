@@ -25,7 +25,7 @@ const MyOrdersPage = async () => {
     },
   });
   return (
-    <>
+    <div className="mx-auto flex max-w-3xl flex-col">
       <Header />
 
       <div className="px-5 py-6">
@@ -37,7 +37,7 @@ const MyOrdersPage = async () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

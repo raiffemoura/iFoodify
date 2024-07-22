@@ -23,7 +23,7 @@ const Search = () => {
     router.push(`/restaurants?search=${search}`);
   };
   return (
-    <form className="flex gap-2" onSubmit={handleSearchSubmit}>
+    <form className="flex gap-2 border-none" onSubmit={handleSearchSubmit}>
       <Input
         type="text"
         placeholder="Buscar restaurantes"
