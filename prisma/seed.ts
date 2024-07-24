@@ -277,7 +277,7 @@ const createPizzas = async (
         name: "Pepperoni Pizza",
         price: 45,
         description: description,
-        discountPercentage: 30,
+        discountPercentage: 15,
         imageUrl:
           "https://utfs.io/f/645ba997-00b1-44ed-9928-b9eb41e93896-berpub.jpg",
         restaurant: {

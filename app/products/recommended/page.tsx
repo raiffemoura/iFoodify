@@ -3,7 +3,6 @@ import ProductItem from "@/app/_components/product-item";
 import { db } from "@/app/_lib/prisma";
 
 const RecommendedProductsPage = async () => {
-  // TODO PEGAR PRODUTOSO COM MAIS PEDIDOS
   const products = await db.product.findMany({
     where: {
       discountPercentage: {
